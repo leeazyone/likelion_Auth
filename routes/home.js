@@ -16,6 +16,7 @@ router.get('/home', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/home.html'))
 })
 
+// 피라미드 페이지
 router.get('/pyramid', (req, res) => {
   if (!req.session.user) {
     return res.redirect('/')

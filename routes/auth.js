@@ -68,13 +68,14 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ msg: '비밀번호가 올바르지 않습니다.' })
     }
 
-    // 세션에 사용자 정보 저장
+    // 로그인 성공 후 세션에 사용자 정보 저장
     req.session.user = {
       id: user.id,
       email: user.email,
       nickname: user.nickname,
     }
 
+    //home 페이지로 이동
     return res.redirect('/home')
   } catch (err) {
     console.error(err)
@@ -84,10 +85,11 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', (req, res) => {
   req.session.destroy((err) => {
+    // 서버 세션 삭제
     if (err) {
       console.error('세션 삭제 오류:', err)
     }
-    res.clearCookie('connect.sid') //쿠키 삭제
+    res.clearCookie('connect.sid') // 브라우저 쿠키 삭제
     res.redirect('/')
   })
 })

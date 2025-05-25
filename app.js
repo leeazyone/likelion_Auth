@@ -4,7 +4,7 @@ const path = require('path')
 const session = require('express-session')
 const authRoutes = require('./routes/auth') //회원가입/로그인 관련
 const homeRoutes = require('./routes/home') //홈페이지 라우터
-//const pyramidRoutes = require('./routes/pyramid')
+//const logsRoutes = require('./routes/logs')
 
 const app = express() //express 앱 생성
 
@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }))
 // 라우터
 app.use('/auth', authRoutes)
 app.use('/', homeRoutes)
-//app.use('/pyramid', pyramidRoutes)
+//app.use('/logs', logsRoutes)
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('서버 실행 중: http://localhost:3000')
